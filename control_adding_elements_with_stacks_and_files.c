@@ -125,3 +125,25 @@ void enfiler(File *file, int nvNombre)
         file->premier = nouveau;
     }
 }
+
+int defiler(File *file)
+{
+    if (file == NULL)
+    {
+        exit(EXIT_FAILURE);
+    }
+
+    int nombreDefile = 0;
+
+    /* On vérifie s'il y a quelque chose à défiler */
+    if (file->premier != NULL)
+    {
+        Element *elementDefile = file->premier;
+
+        nombreDefile = elementDefile->nombre;
+        file->premier = elementDefile->suivant;
+        free(elementDefile);
+    }
+
+    return nombreDefile;
+}
